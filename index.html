@@ -46,13 +46,13 @@
 
 <div id="app">
 
-  <div v-if="keyword === '12345'">
+  <div v-if="keyword === '784512'">
     <img src="img2.jpeg"/>
     <div style="position:absolute; z-index:2; left:250px; top:230px; width: 600px; font-size:35px; color: rgb(49,112,196)">
-      {{ curTime !== '' ? curTime : '2021-06-23 11:32:44' }}
+      {{ curTime !== '' ? curTime : '2022-01-17 11:32:44' }}
     </div>
     <div style="position:absolute; z-index:2; left:110px; top:1070px; width: 600px; font-size:25px; color: rgb(114,53,251)">
-      2021-06-23 11:32:44
+      {{ fortyEightHoursAge !== '' ? fortyEightHoursAge : '2022-01-17 11:32:44' }}
     </div>
   </div>
   <div v-else>
@@ -78,7 +78,8 @@
         el: '#app',
         data: {
             keyword: '',
-            curTime: ''
+            curTime: '',
+            fortyEightHoursAge: ''
         },
         watch: {},
         computed: {},
@@ -89,7 +90,7 @@
         mounted: function () {
             console.log("Vue mounted");
             setInterval(this.getTimeFunc, 1000);
-
+            setInterval(this.getCheckTimeFunc, 1000);
         },
         methods: {
             handleClick(type) {
@@ -97,6 +98,10 @@
             },
             getTimeFunc() {
               this.curTime = this.formatDate(new Date());
+            },
+            getCheckTimeFunc() {
+              let now = new Date();
+              this.fortyEightHoursAge = this.formatDate(now - 20 * 60 * 60 * 1000);
             },
             formatDate(date) {
               var date = new Date(date);
