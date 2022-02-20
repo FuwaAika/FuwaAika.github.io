@@ -48,7 +48,7 @@
 
   <div v-if="keyword === '784512'">
     <img src="img2.jpeg"/>
-    <div style="position:absolute; z-index:2; left:250px; top:230px; width: 600px; font-size:35px; color: rgb(49,112,196)">
+    <div style="position:absolute; z-index:2; left:180px; top:230px; width: 600px; font-size:50px; color: rgb(49,112,196)">
       {{ curTime !== '' ? curTime : '2022-01-17 11:32:44' }}
     </div>
     <div style="position:absolute; z-index:2; left:110px; top:1070px; width: 600px; font-size:25px; color: rgb(114,53,251)">
@@ -90,7 +90,7 @@
         mounted: function () {
             console.log("Vue mounted");
             setInterval(this.getTimeFunc, 1000);
-            setInterval(this.getCheckTimeFunc, 1000);
+            this.getCheckTimeFunc();
         },
         methods: {
             handleClick(type) {
